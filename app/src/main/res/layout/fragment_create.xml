@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/body"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="CREATE YOUT OWN EVENT"
+                android:textColor="@color/colorAccent"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                tools:ignore="HardcodedText"
+                android:layout_marginBottom="30dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Name"
+                tools:ignore="HardcodedText"
+                android:textColor="@color/colorAccent"
+                />
+
+            <EditText
+                android:id="@+id/etCreateEventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                android:paddingLeft="20dp"
+                android:hint="Nama Event"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="Description"
+                tools:ignore="HardcodedText"
+                />
+
+            <EditText
+                android:id="@+id/etCreateEventDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                android:paddingLeft="20dp"
+                android:hint="Deskripsi Event"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="Tanggal Mulai"
+                tools:ignore="HardcodedText"
+                />
+
+            <TextView
+                android:id="@+id/tvCreateEventTanggalMulai"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:text="YYYY-MM-DD"
+                tools:ignore="HardcodedText"
+                android:background="@drawable/input"
+                android:paddingStart="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="Tanggal Selesai"
+                tools:ignore="HardcodedText"
+                />
+
+            <TextView
+                android:id="@+id/tvCreateEventTanggalSelesai"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="YYYY-MM-DD"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                android:paddingStart="20dp"/>
+
+            <TextView
+                android:id="@+id/tvCreateEventStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="Status"
+                tools:ignore="HardcodedText"
+                />
+
+            <RadioGroup
+                android:id="@+id/rgCreateEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbCreateEVentOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="OPEN"
+                    tools:ignore="HardcodedText"/>
+
+                <RadioButton
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/rbCreateEVentClose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="CLOSE"
+                    tools:ignore="HardcodedText"/>
+
+                <RadioButton
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/rbCreateEVentOnGoing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="ON GOING"
+                    tools:ignore="HardcodedText"/>
+
+                <RadioButton
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/rbCreateEVentDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:background="@drawable/input"
+                    android:text="DONE"
+                    tools:ignore="HardcodedText"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="Maximal Member"
+                tools:ignore="HardcodedText"
+                />
+
+            <EditText
+                android:id="@+id/etCreateEventMaxMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:background="@drawable/input"
+                android:paddingLeft="20dp"
+                android:hint="Max"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/tvCreateEventCoverImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="COVER IMAGE"
+                tools:ignore="HardcodedText"
+                />
+
+            <ImageView
+                android:id="@+id/ivCreateEventCoverimage"
+                android:layout_marginTop="20dp"
+                android:layout_width="200dp"
+                android:background="@drawable/input"
+                android:layout_height="200dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"
+                tools:targetApi="o" />
+
+            <Button
+                android:id="@+id/btnCreateEventImage"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="IMAGE"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="left"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="0dp"
+                >
+
+                <ProgressBar
+                    android:id="@+id/pbCreateEventSubmitLoading"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="50dp"
+                    android:indeterminate="true"
+                    android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCreateEventSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
