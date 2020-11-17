@@ -41,9 +41,10 @@ public interface Services {
             @Field("password") String password
     );
 
+    @FormUrlEncoded
     @POST("/api/event/read")
     Call<ArrayList<Event>> readEvent(
-
+            @Field("user_id") String user_id
     );
 
     @Multipart
@@ -66,5 +67,10 @@ public interface Services {
             @Field("user_id") String user_id
     );
 
+    @FormUrlEncoded
+    @POST("/api/event/myevent")
+    Call<ArrayList<Event>> readMyEvent(
+            @Field("user_id") String user_id
+    );
 
 }

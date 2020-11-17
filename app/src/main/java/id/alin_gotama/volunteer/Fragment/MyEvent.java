@@ -14,49 +14,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-
-import id.alin_gotama.volunteer.HomeActivity;
 import id.alin_gotama.volunteer.R;
 import id.alin_gotama.volunteer.Recycler.CustomAdapter;
+import id.alin_gotama.volunteer.Recycler.CustomAdapterMyEvent;
 import id.alin_gotama.volunteer.SQLModel.Event;
 
-public class JoinEvent extends Fragment {
-    public static final String BUNDLE_EVENTS = "bundle_events";
-
+public class MyEvent extends Fragment {
+    public static final String EVENTS = "myEvents";
     private Context context;
     private ArrayList<Event> events;
+
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
-    public JoinEvent() {
-
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public MyEvent() {
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
-        this.events = new ArrayList<>();
+        View view = inflater.inflate(R.layout.myevent,container,false);
         Bundle bundle = getArguments();
-        this.events = bundle.getParcelableArrayList(BUNDLE_EVENTS);
+        this.events = bundle.getParcelableArrayList(EVENTS);
+
         this.context = getActivity().getBaseContext();
+        CustomAdapterMyEvent customAdapter = new CustomAdapterMyEvent(events,context);
 
-        CustomAdapter customAdapter = new CustomAdapter(context,events);
-        recyclerView = view.findViewById(R.id.HomeRecyclerView);
 
-        layoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(layoutManager);
+        this.recyclerView = view.findViewById(R.id.rvMyEvent);
+        this.layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(this.layoutManager);
         recyclerView.setAdapter(customAdapter);
 
         return view;

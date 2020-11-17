@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import id.alin_gotama.volunteer.Model.ServerLoginModel;
 import id.alin_gotama.volunteer.Model.ServerRespon;
@@ -26,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText etPasswordLogin;
     private Button btnSubmitLogin;
     private Button btnRegister;
+    private ProgressBar pbLogin;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -39,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         this.etPasswordLogin = findViewById(R.id.etLoginPassword);
         this.btnSubmitLogin = findViewById(R.id.btnLoginSumbit);
         this.btnRegister = findViewById(R.id.btnLoginRegister);
-
+        this.pbLogin = findViewById(R.id.pbLogin);
         this.btnSubmitLogin.setOnClickListener(this);
         this.btnRegister.setOnClickListener(this);
         sharedPreferences = getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE, Context.MODE_PRIVATE);
@@ -48,16 +52,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(HomeIntent);
             finish();
         }
-
-
-
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnLoginSumbit){
             Services services = ApiClient.getRetrofit().create(Services.class);
-
+            this.pbLogin.setVisibility(ProgressBar.VISIBLE);
             Call<ServerLoginModel> call = services.login(
                     this.etUsernameLogin.getText().toString().trim(),
                     this.etPasswordLogin.getText().toString().trim()
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<ServerLoginModel> call, Response<ServerLoginModel> response) {
                     if(response.body().getStatus().matches("200")){
-
+                        pbLogin.setVisibility(ProgressBar.INVISIBLE);
                         editor = sharedPreferences.edit();
                         editor.putString(penyimpanan.VOLUNTEERIN_USERNAME,response.body().getUsername());
                         editor.putString(penyimpanan.VOLUNTEERIN_FULLNAME,response.body().getUserfullname());
@@ -83,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 @Override
                 public void onFailure(Call<ServerLoginModel> call, Throwable t) {
+                    pbLogin.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(LoginActivity.this, "gagal " + t.toString() , Toast.LENGTH_SHORT).show();
                 }
 

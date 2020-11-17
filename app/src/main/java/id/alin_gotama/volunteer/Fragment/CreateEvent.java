@@ -81,9 +81,7 @@ public class CreateEvent extends Fragment implements View.OnClickListener,DatePi
 
     DatePickerFragment.onSelect monSelect;
 
-    public CreateEvent(Context context) {
-        this.context = context;
-        this.sharedPreferences = this.context.getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE,Context.MODE_PRIVATE);
+    public CreateEvent() {
     }
 
     @Nullable
@@ -97,6 +95,9 @@ public class CreateEvent extends Fragment implements View.OnClickListener,DatePi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        this.context = view.getContext();
+        this.sharedPreferences = this.context.getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE,Context.MODE_PRIVATE);
 
         this.etNama = view.findViewById(R.id.etCreateEventName);
         this.etDeskripsi = view.findViewById(R.id.etCreateEventDescription);
@@ -277,24 +278,27 @@ public class CreateEvent extends Fragment implements View.OnClickListener,DatePi
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == MY_IMAGE_REQUEST){
-            Uri selectedImage = data.getData();
 
-            String result = requestRead(selectedImage);
-            imageFile = new File(result);
+                Log.d("result",String.valueOf(resultCode));
+                Uri selectedImage = data.getData();
 
-            if(imageFile.exists()){
-                this.ivCoverimage.setImageURI(selectedImage);
-                this.imageStatus = 1;
-            }else{
-                Toast.makeText(context, "TIDAK DAPAT MENGGUNAKAN GAMBAR TERSEBUT !", Toast.LENGTH_LONG).show();
-            }
+                String result = requestRead(selectedImage);
+                imageFile = new File(result);
+
+                if(imageFile.exists()){
+                    this.ivCoverimage.setImageURI(selectedImage);
+                    this.imageStatus = 1;
+                }else{
+                    Toast.makeText(context, "TIDAK DAPAT MENGGUNAKAN GAMBAR TERSEBUT !", Toast.LENGTH_LONG).show();
+                }
+
         }
     }
 
     @SuppressLint("ObsoleteSdkInt")
     public String getPathFromURI(Uri uri){
         String realPath="";
-// SDK < API11
+    // SDK < API11
         if (Build.VERSION.SDK_INT < 11) {
             String[] proj = { MediaStore.Images.Media.DATA };
             @SuppressLint("Recycle") Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
@@ -356,5 +360,4 @@ public class CreateEvent extends Fragment implements View.OnClickListener,DatePi
         }
         return result;
     }
-
 }

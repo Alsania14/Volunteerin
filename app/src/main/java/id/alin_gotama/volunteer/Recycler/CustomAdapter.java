@@ -3,14 +3,12 @@ package id.alin_gotama.volunteer.Recycler;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,11 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-import id.alin_gotama.volunteer.HomeActivity;
 import id.alin_gotama.volunteer.JoinEventActivity;
 import id.alin_gotama.volunteer.R;
 import id.alin_gotama.volunteer.SQLModel.Event;
@@ -35,6 +30,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public CustomAdapter(Context context, ArrayList<Event> events) {
         this.context = context;
         this.events = events;
+    }
+
+    public void remove(int i){
+        this.events.remove(i);
     }
 
     @NonNull
@@ -64,7 +63,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             @Override
             public void onClick(View v) {
                 Intent intenJoinEvent = new Intent(context, JoinEventActivity.class);
+                intenJoinEvent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intenJoinEvent.putExtra(JoinEventActivity.EVENT_POSITION,position);
                 intenJoinEvent.putExtra(JoinEventActivity.EVENT_KEY,events.get(position));
+                JoinEventActivity.customAdapter = CustomAdapter.this;
                 context.startActivity(intenJoinEvent);
             }
         });
