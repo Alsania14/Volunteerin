@@ -1,5 +1,7 @@
 package id.alin_gotama.volunteer.services;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,8 @@ import id.alin_gotama.volunteer.Model.ServerLoginModel;
 import id.alin_gotama.volunteer.Model.ServerRegisterRespon;
 import id.alin_gotama.volunteer.Model.ServerRespon;
 import id.alin_gotama.volunteer.SQLModel.Event;
+import id.alin_gotama.volunteer.SQLModel.RequestForJoinRespon;
+import id.alin_gotama.volunteer.SQLModel.User;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -71,6 +75,18 @@ public interface Services {
     @POST("/api/event/myevent")
     Call<ArrayList<Event>> readMyEvent(
             @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/event/delete")
+    Call<ServerDefaultRespon> deleteEvent(
+            @Field("event_id") String event_id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/read")
+    Call<ArrayList<User>> requestForJoin(
+            @Field("event_id") String event_id
     );
 
 }

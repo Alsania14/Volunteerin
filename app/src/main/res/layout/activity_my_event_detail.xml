@@ -1,9 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyEventDetailActivity">
+    tools:context=".JoinEventActivity"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/MyEventHeader"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MY EVENT"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/MyEventHeader"
+        android:layout_above="@id/MyEventFooter"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/body"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:clipToPadding="false"
+            android:layout_marginBottom="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivMyEventDetailCoverImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:src="@drawable/logo"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/tvMyEventDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorAccent"
+                />
+
+            <TextView
+                android:id="@+id/tvMyEventDetailDescription"
+                android:layout_marginTop="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:layout_marginTop="10dp"
+                >
+                <TableRow android:background="@color/colorAccent">
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:text="Creator Event"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:id="@+id/tvMyEventDetailCretor"
+                        android:layout_marginEnd="10dp"
+                        android:text="\?\?\?\?"
+                        tools:ignore="HardcodedText,RtlHardcoded"
+                        android:gravity="right"/>
+                </TableRow>
+
+                <TableRow android:background="@color/colorPrimary">
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:text="Tanggal Mulai"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:id="@+id/tvMyEventDetailTanggalMulai"
+                        android:layout_marginEnd="10dp"
+                        android:text="\?\?\?\?"
+                        tools:ignore="HardcodedText,RtlHardcoded"
+                        android:gravity="right"/>
+                </TableRow>
+
+                <TableRow android:background="@color/colorAccent">
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:text="Tanggal Selesai"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:id="@+id/tvMyEventDetailTanggalSelesai"
+                        android:layout_marginEnd="10dp"
+                        android:text="\?\?\?\?"
+                        tools:ignore="HardcodedText,RtlHardcoded"
+                        android:gravity="right"/>
+                </TableRow>
+
+
+                <TableRow android:background="@color/colorPrimary">
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:text="Member Saat ini / Maximal"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:id="@+id/tvMyEventDetailMaxMember"
+                        android:layout_marginEnd="10dp"
+                        android:text="\?\?\?\?"
+                        tools:ignore="HardcodedText,RtlHardcoded"
+                        android:gravity="right"/>
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:id="@+id/pbMyEventDetailEvent"
+                    android:layout_marginTop="10dp"
+                    android:visibility="invisible"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnMyEventDetailReq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="REQUEST FOR JOIN"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btnMyEventDetailDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="DELETE"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btnMyEventDetailBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="BACK"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/MyEventFooter"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/footer"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Right Reserved | Kelompok Pratikum"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+</RelativeLayout>
