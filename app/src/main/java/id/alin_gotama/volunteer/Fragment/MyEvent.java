@@ -28,7 +28,6 @@ public class MyEvent extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
     public MyEvent() {
-
     }
 
     @Nullable
@@ -40,7 +39,6 @@ public class MyEvent extends Fragment {
 
         this.context = getActivity().getBaseContext();
         CustomAdapterMyEvent customAdapter = new CustomAdapterMyEvent(events,context);
-
 
         this.recyclerView = view.findViewById(R.id.rvMyEvent);
         this.layoutManager = new LinearLayoutManager(context);

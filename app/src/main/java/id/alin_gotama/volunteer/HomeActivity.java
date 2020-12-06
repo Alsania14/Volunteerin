@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import id.alin_gotama.volunteer.Model.ServerDefaultRespon;
 import id.alin_gotama.volunteer.Penyimpanan.penyimpanan;
 
 import android.annotation.SuppressLint;
@@ -53,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
         sharedPreferences = getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE,Context.MODE_PRIVATE);
         this.user_id = sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,"");
-
+        this.setToken();
         this.JoinEvent();
 
         this.bottomNavigationView = findViewById(R.id.HomeNavBar);
@@ -187,5 +189,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+    }
+
+    public void setToken(){
+        Services services = ApiClient.getRetrofit().create(Services.class);
+        Call<ServerDefaultRespon> call = services.tokenFeeder(
+                this.sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,""),
+                this.sharedPreferences.getString(penyimpanan.VOLUNTEERIN_TOKEN,"")
+        );
+
+        call.enqueue(new Callback<ServerDefaultRespon>() {
+            @Override
+            public void onResponse(Call<ServerDefaultRespon> call, Response<ServerDefaultRespon> response) {
+                Toast.makeText(HomeActivity.this, "TOKEN TERUPDATE", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ServerDefaultRespon> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

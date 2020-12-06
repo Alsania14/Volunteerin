@@ -18,6 +18,13 @@
         >
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap Volunteer"
+            android:textColor="@color/colorAccent"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:id="@+id/tvRequestForJoinFullName"
             android:layout_width="match_parent"
             android:textSize="20sp"
@@ -25,28 +32,64 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Username volunteer"
+            android:textColor="@color/colorAccent"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:id="@+id/tvRequestForJoinName"
             android:layout_width="match_parent"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"
             android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Bio"
+            android:textColor="@color/colorAccent"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tvRequestForJoinBio"
             android:layout_width="match_parent"
             android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nomor Telp"
+            android:textColor="@color/colorAccent"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tvRequestForJoinNoTelp"
             android:layout_width="match_parent"
             android:textColor="@color/colorAccent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ProgressBar
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="invisible"
+                />
+
+        </LinearLayout>
         
         <LinearLayout
             android:layout_width="match_parent"

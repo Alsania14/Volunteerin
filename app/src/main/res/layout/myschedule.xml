@@ -7,10 +7,9 @@
     android:orientation="vertical"
     android:background="@drawable/logo">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSchedule"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ON PROGRESS MYSCHEDULE"
-        tools:ignore="HardcodedText" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

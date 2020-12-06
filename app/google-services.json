@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "940979365632",
+    "project_id": "volunteerin-a8ae5",
+    "storage_bucket": "volunteerin-a8ae5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940979365632:android:8272548cceb7ba7914f5e5",
+        "android_client_info": {
+          "package_name": "id.alin_gotama.volunteer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940979365632-bff6c25u28cetd3nb41n8nsk40p4dor0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFEU7TKoHC3mWaJj9MlYm0l3uPjqdydFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940979365632-bff6c25u28cetd3nb41n8nsk40p4dor0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

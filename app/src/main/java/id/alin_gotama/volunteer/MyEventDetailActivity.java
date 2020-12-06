@@ -123,7 +123,6 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
                     intentan.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intentan.putExtra(RequestForJoinActivity.USERS,response.body());
                     startActivity(intentan);
-
                 }
 
                 @Override

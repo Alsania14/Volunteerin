@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
+
 import id.alin_gotama.volunteer.Model.ServerLoginModel;
 import id.alin_gotama.volunteer.Model.ServerRespon;
 import id.alin_gotama.volunteer.services.ApiClient;
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         this.pbLogin = findViewById(R.id.pbLogin);
         this.btnSubmitLogin.setOnClickListener(this);
         this.btnRegister.setOnClickListener(this);
+        
         sharedPreferences = getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE, Context.MODE_PRIVATE);
         if(this.CheckLogin()){
             Intent HomeIntent = new Intent(LoginActivity.this,HomeActivity.class);

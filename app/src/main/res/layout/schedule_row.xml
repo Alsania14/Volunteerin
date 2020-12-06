@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:orientation="vertical"
+        android:padding="6dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivMySchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="200dp"
+            android:adjustViewBounds="true"
+            />
+
+        <TextView
+            android:id="@+id/tvMyScheduleTitle"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvMyScheduleDescription"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

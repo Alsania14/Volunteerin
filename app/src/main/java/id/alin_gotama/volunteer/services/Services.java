@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import id.alin_gotama.volunteer.Model.DetailEvent;
 import id.alin_gotama.volunteer.Model.ServerDefaultRespon;
 import id.alin_gotama.volunteer.Model.ServerLoginModel;
 import id.alin_gotama.volunteer.Model.ServerRegisterRespon;
@@ -87,6 +88,31 @@ public interface Services {
     @POST("/api/detailevent/read")
     Call<ArrayList<User>> requestForJoin(
             @Field("event_id") String event_id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/accept")
+    Call<ServerDefaultRespon> acceptForJoin(
+            @Field("id") String detail_event_id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/denied")
+    Call<ServerDefaultRespon> deniedForJoin(
+            @Field("id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/tokenfeeder")
+    Call<ServerDefaultRespon> tokenFeeder(
+            @Field("user_id") String user_id,
+            @Field("token") String token
+    );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/myschedule")
+    Call<ArrayList<DetailEvent>> myschedule(
+            @Field("user_id") String id
     );
 
 }

@@ -75,12 +75,13 @@ public class Profile extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 editor = sharedPreferences.edit();
-                editor.clear();
+                editor.remove(penyimpanan.VOLUNTEERIN_ID);
+                editor.remove(penyimpanan.VOLUNTEERIN_USERNAME);
+                editor.remove(penyimpanan.VOLUNTEERIN_FULLNAME);
                 boolean clear = editor.commit();
                 if(clear){
                     System.exit(0);
                 }
-
             }
         });
 
