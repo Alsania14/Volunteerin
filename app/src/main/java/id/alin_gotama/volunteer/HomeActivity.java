@@ -152,7 +152,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void Profile(){
-        Profile profile = new Profile(HomeActivity.this);
+        Profile profile = new Profile();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction().replace(R.id.HomeFrameLayout,profile);
         ft.commit();
     }

@@ -135,4 +135,13 @@ public interface Services {
             @Field("user_id") String user_id
     );
 
+    @FormUrlEncoded
+    @POST("/api/update")
+    Call<ServerDefaultRespon> updateUser(
+        @Field("id") String id,
+        @Field("full_name") String full_name,
+        @Field("username") String username,
+        @Field("bio") String bio,
+        @Field("no_telp") String no_telp
+    );
 }
