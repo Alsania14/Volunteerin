@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import id.alin_gotama.volunteer.Model.DetailEvent;
 import id.alin_gotama.volunteer.Model.ServerDefaultRespon;
 import id.alin_gotama.volunteer.Penyimpanan.penyimpanan;
 
@@ -36,6 +37,7 @@ import id.alin_gotama.volunteer.Fragment.JoinEvent;
 import id.alin_gotama.volunteer.Fragment.MyEvent;
 import id.alin_gotama.volunteer.Fragment.MySchedule;
 import id.alin_gotama.volunteer.Fragment.Profile;
+import id.alin_gotama.volunteer.Recycler.CustomAdapterMySchedule;
 import id.alin_gotama.volunteer.SQLModel.Event;
 import id.alin_gotama.volunteer.services.ApiClient;
 import id.alin_gotama.volunteer.services.Services;
@@ -181,9 +183,30 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void MySchedule(){
-        MySchedule mySchedule = new MySchedule();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction().replace(R.id.HomeFrameLayout,mySchedule);
-        ft.commit();
+        Services services = ApiClient.getRetrofit().create(Services.class);
+        Call<ArrayList<DetailEvent>> call = services.myschedule(
+                this.sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,"")
+        );
+
+        call.enqueue(new Callback<ArrayList<DetailEvent>>() {
+            @Override
+            public void onResponse(Call<ArrayList<DetailEvent>> call, Response<ArrayList<DetailEvent>> response) {
+                MySchedule mySchedule = new MySchedule();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList(MySchedule.DETAIL_EVENTS,response.body());
+                mySchedule.setArguments(bundle);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction().replace(R.id.HomeFrameLayout,mySchedule);
+                ft.commit();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<DetailEvent>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "PERIKSA KONEKSI ANDA", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
     }
 
     @Override

@@ -51,7 +51,8 @@ public class Profile extends Fragment {
 
         this.tvUsername.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_USERNAME,"Empty"));
         this.tvFullName.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_FULLNAME,"Empty"));
-
+        this.tvBio.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_BIO,"Empty"));
+        this.tvNoTlp.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_NOMOR,"Empty"));
         this.btnLogoout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

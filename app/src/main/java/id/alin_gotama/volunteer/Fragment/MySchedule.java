@@ -29,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MySchedule extends Fragment {
+    public static final String DETAIL_EVENTS = "DETAIL_EVENTS";
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private SharedPreferences sharedPreferences;
@@ -48,28 +49,9 @@ public class MySchedule extends Fragment {
 
         this.sharedPreferences = getContext().getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE, Context.MODE_PRIVATE);
         detailEvents = new ArrayList<>();
-        final CustomAdapterMySchedule customAdapterMySchedule = new CustomAdapterMySchedule(getContext(),detailEvents);
+        this.detailEvents = getArguments().getParcelableArrayList(DETAIL_EVENTS);
+        CustomAdapterMySchedule customAdapterMySchedule = new CustomAdapterMySchedule(getContext(),detailEvents);
         recyclerView.setAdapter(customAdapterMySchedule);
-        Services services = ApiClient.getRetrofit().create(Services.class);
-        Call<ArrayList<DetailEvent>> call = services.myschedule(
-            this.sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,"")
-        );
-
-        call.enqueue(new Callback<ArrayList<DetailEvent>>() {
-            @Override
-            public void onResponse(Call<ArrayList<DetailEvent>> call, Response<ArrayList<DetailEvent>> response) {
-                Toast.makeText(getContext(), sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,""), Toast.LENGTH_SHORT).show();
-                CustomAdapterMySchedule.detailEvents = response.body();
-                customAdapterMySchedule.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<DetailEvent>> call, Throwable t) {
-                Toast.makeText(getContext(), "GAGAL"+t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error",t.getMessage());
-            }
-
-        });
 
         return view;
     }

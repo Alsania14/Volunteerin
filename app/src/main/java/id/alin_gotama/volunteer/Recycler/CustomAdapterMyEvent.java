@@ -23,11 +23,11 @@ import id.alin_gotama.volunteer.SQLModel.Event;
 import id.alin_gotama.volunteer.services.ApiClient;
 
 public class CustomAdapterMyEvent extends RecyclerView.Adapter<CustomAdapterMyEvent.CustomViewHolder> {
-    private ArrayList<Event> events;
+    public static ArrayList<Event> events;
     private Context context;
 
     public CustomAdapterMyEvent(ArrayList<Event> events, Context context) {
-        this.events = events;
+        CustomAdapterMyEvent.events = events;
         this.context = context;
     }
 

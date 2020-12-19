@@ -76,6 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.putString(penyimpanan.VOLUNTEERIN_USERNAME,response.body().getUsername());
                         editor.putString(penyimpanan.VOLUNTEERIN_FULLNAME,response.body().getUserfullname());
                         editor.putString(penyimpanan.VOLUNTEERIN_ID,response.body().getUser_id());
+                        editor.putString(penyimpanan.VOLUNTEERIN_NOMOR,response.body().getNo_telp());
+                        editor.putString(penyimpanan.VOLUNTEERIN_BIO,response.body().getBio());
                         editor.apply();
                         Intent HomeIntent = new Intent(LoginActivity.this,HomeActivity.class);
                         startActivity(HomeIntent);

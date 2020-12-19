@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LihatAngggotaActivity">
+
+    <LinearLayout
+        android:id="@+id/llLihatAnggotaHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIHAT ANGGOTA"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIHAT ANGGOTA"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLihatAnggota"
+        android:layout_below="@id/llLihatAnggotaHeader"
+        android:layout_above="@id/llLihatAnggotaFooter"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="-20dp"
+        android:paddingTop="30dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/llLihatAnggotaFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KELOMPOK PRATIKUM"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+</RelativeLayout>

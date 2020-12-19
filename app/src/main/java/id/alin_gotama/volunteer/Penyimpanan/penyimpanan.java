@@ -5,5 +5,7 @@ public class penyimpanan {
     public static final String VOLUNTEERIN_USERNAME = "VOLUNTEERIN_USER";
     public static final String VOLUNTEERIN_ID = "VOLUNTEERIN_ID";
     public static final String VOLUNTEERIN_FULLNAME = "VOLUNTEERIN_FULLNAME";
+    public static final String VOLUNTEERIN_BIO = "VOLUNTEERIN_BIO";
+    public static final String VOLUNTEERIN_NOMOR = "VOLUNTEERIN_NOMOR";
     public static final String VOLUNTEERIN_TOKEN = "VOLUNTEERIN TOKEN";
 }

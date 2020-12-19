@@ -11,6 +11,7 @@ import id.alin_gotama.volunteer.Model.ServerDefaultRespon;
 import id.alin_gotama.volunteer.Model.ServerLoginModel;
 import id.alin_gotama.volunteer.Model.ServerRegisterRespon;
 import id.alin_gotama.volunteer.Model.ServerRespon;
+import id.alin_gotama.volunteer.SQLModel.Anggota;
 import id.alin_gotama.volunteer.SQLModel.Event;
 import id.alin_gotama.volunteer.SQLModel.RequestForJoinRespon;
 import id.alin_gotama.volunteer.SQLModel.User;
@@ -113,6 +114,25 @@ public interface Services {
     @POST("/api/detailevent/myschedule")
     Call<ArrayList<DetailEvent>> myschedule(
             @Field("user_id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/event/update")
+    Call<ServerDefaultRespon> updateevent(
+            @Field("event_name") String event_name,
+            @Field("description") String description,
+            @Field("tanggal_mulai") String tanggal_mulai,
+            @Field("tanggal_selesai") String tanggal_selesai,
+            @Field("status") String status,
+            @Field("maximal_member") String maximal_member,
+            @Field("event_id") String event_id
+    );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/semuaanggotaevent")
+    Call<ArrayList<Anggota>> ambilSemuaAnggota(
+            @Field("event_id") String event_id,
+            @Field("user_id") String user_id
     );
 
 }

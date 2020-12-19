@@ -170,6 +170,15 @@
                 tools:ignore="HardcodedText" />
 
             <Button
+                android:id="@+id/btnMyEventDetailUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="UPDATE"
+                android:background="@drawable/button"
+                tools:ignore="HardcodedText" />
+
+            <Button
                 android:id="@+id/btnMyEventDetailBack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

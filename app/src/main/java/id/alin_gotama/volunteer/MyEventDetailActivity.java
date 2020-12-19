@@ -1,5 +1,6 @@
 package id.alin_gotama.volunteer;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,8 @@ import com.bumptech.glide.Glide;
 
 import org.json.JSONObject;
 
+import id.alin_gotama.volunteer.DatabaseHelper.EventHelper;
+import id.alin_gotama.volunteer.Fragment.MyEvent;
 import id.alin_gotama.volunteer.Penyimpanan.penyimpanan;
 
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ import id.alin_gotama.volunteer.Recycler.CustomAdapterMyEvent;
 import id.alin_gotama.volunteer.SQLModel.Event;
 import id.alin_gotama.volunteer.SQLModel.RequestForJoinRespon;
 import id.alin_gotama.volunteer.SQLModel.User;
+import id.alin_gotama.volunteer.Service.Service;
 import id.alin_gotama.volunteer.services.ApiClient;
 import id.alin_gotama.volunteer.services.Services;
 import retrofit2.Call;
@@ -53,7 +57,7 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
 
     private ImageView ivCoverImage;
 
-    private Button btnReq,btnDelete,btnBack;
+    private Button btnReq,btnDelete,btnBack,btnUpdate;
     private ProgressBar pbMyEventDetail;
 
     @Override
@@ -82,6 +86,9 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
 
         this.btnDelete = findViewById(R.id.btnMyEventDetailDelete);
         this.btnDelete.setOnClickListener(this);
+
+        this.btnUpdate = findViewById(R.id.btnMyEventDetailUpdate);
+        this.btnUpdate.setOnClickListener(this);
 
         this.pbMyEventDetail = findViewById(R.id.pbMyEventDetailEvent);
 
@@ -180,5 +187,48 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
             dialog.create();
             dialog.show();
         }
+        else if(v.getId() == R.id.btnMyEventDetailUpdate){
+            Intent intent = new Intent(MyEventDetailActivity.this,UpdateEvent.class);
+            intent.putExtra(UpdateEvent.EVENT,event);
+            startActivityForResult(intent,1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                assert data != null;
+                this.event = data.getParcelableExtra(UpdateEvent.RESULT);
+
+                this.tvTitle.setText(event.getNama());
+                this.tvDescription.setText(event.getDeskripsi());
+                this.tvMaxMember.setText(String.valueOf(event.getMaximal_member()));
+                this.tvTglMulai.setText(event.getTanggal_mulai());
+                this.tvTglSelesai.setText(event.getTanggal_selesai());
+
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Services services = ApiClient.getRetrofit().create(Services.class);
+        Call<ArrayList<Event>> call = services.readMyEvent(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_ID,""));
+        call.enqueue(new Callback<ArrayList<Event>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
+                CustomAdapterMyEvent.events = response.body();
+                MyEvent.customAdapterMyEvent.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Event>> call, Throwable t) {
+                Toast.makeText(MyEventDetailActivity.this, "PERIKSA KONEKSI ANDA", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

@@ -67,7 +67,7 @@ public class DatePickerFragment extends DialogFragment implements View.OnClickLi
             StringBuilder tanggal = new StringBuilder();
             tanggal.append(this.datePicker.getYear());
             tanggal.append("-");
-            tanggal.append(this.datePicker.getMonth());
+            tanggal.append((this.datePicker.getMonth()+1));
             tanggal.append("-");
             tanggal.append(this.datePicker.getDayOfMonth());
 

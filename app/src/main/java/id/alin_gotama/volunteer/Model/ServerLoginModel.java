@@ -8,6 +8,8 @@ public class ServerLoginModel implements Parcelable {
     private String user_id;
     private String username;
     private String userfullname;
+    private String no_telp;
+    private String bio;
     private String message;
     private String errors;
 
@@ -78,6 +80,22 @@ public class ServerLoginModel implements Parcelable {
 
     public void setUserfullname(String userfullname) {
         this.userfullname = userfullname;
+    }
+
+    public String getNo_telp() {
+        return no_telp;
+    }
+
+    public void setNo_telp(String no_telp) {
+        this.no_telp = no_telp;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     @Override

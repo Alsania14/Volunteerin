@@ -1,5 +1,6 @@
 package id.alin_gotama.volunteer.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ public class MyEvent extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    @SuppressLint("StaticFieldLeak")
+    public static CustomAdapterMyEvent customAdapterMyEvent;
 
     public MyEvent() {
     }
@@ -38,12 +41,12 @@ public class MyEvent extends Fragment {
         this.events = bundle.getParcelableArrayList(EVENTS);
 
         this.context = getActivity().getBaseContext();
-        CustomAdapterMyEvent customAdapter = new CustomAdapterMyEvent(events,context);
+        customAdapterMyEvent = new CustomAdapterMyEvent(events,context);
 
         this.recyclerView = view.findViewById(R.id.rvMyEvent);
         this.layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(this.layoutManager);
-        recyclerView.setAdapter(customAdapter);
+        recyclerView.setAdapter(customAdapterMyEvent);
 
         return view;
     }

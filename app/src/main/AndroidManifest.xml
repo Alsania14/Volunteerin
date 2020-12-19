@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -17,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestForJoinActivity"></activity>
+        <activity android:name=".LihatAngggotaActivity"></activity>
+        <activity android:name=".UpdateEvent" />
+        <activity android:name=".RequestForJoinActivity" />
         <activity android:name=".MyEventDetailActivity" />
         <activity android:name=".JoinEventActivity" />
         <activity android:name=".RegisterActivity" />
@@ -26,12 +27,15 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".FireBaseKu"
-                android:exported="false"
-                android:directBootAware="true">
+
+        <service
+            android:name=".FireBaseKu"
+            android:directBootAware="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
