@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 
 import id.alin_gotama.volunteer.Model.ServerDefaultRespon;
 import id.alin_gotama.volunteer.Recycler.CustomAdapterMyEvent;
+import id.alin_gotama.volunteer.SQLModel.Anggota;
 import id.alin_gotama.volunteer.SQLModel.Event;
 import id.alin_gotama.volunteer.SQLModel.RequestForJoinRespon;
 import id.alin_gotama.volunteer.SQLModel.User;
@@ -43,6 +45,7 @@ import retrofit2.Response;
 public class MyEventDetailActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EVENT = "event";
     public static final String POSITION = "position";
+    @SuppressLint("StaticFieldLeak")
     public static CustomAdapterMyEvent customAdapterMyEvent;
     private SharedPreferences sharedPreferences;
     private int position;
@@ -57,7 +60,7 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
 
     private ImageView ivCoverImage;
 
-    private Button btnReq,btnDelete,btnBack,btnUpdate;
+    private Button btnReq,btnDelete,btnBack,btnUpdate,btnSemuaAnggota;
     private ProgressBar pbMyEventDetail;
 
     @Override
@@ -89,6 +92,9 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
 
         this.btnUpdate = findViewById(R.id.btnMyEventDetailUpdate);
         this.btnUpdate.setOnClickListener(this);
+
+        this.btnSemuaAnggota = findViewById(R.id.btnMyEventDetailSemuanAnggota);
+        this.btnSemuaAnggota.setOnClickListener(this);
 
         this.pbMyEventDetail = findViewById(R.id.pbMyEventDetailEvent);
 
@@ -191,6 +197,26 @@ public class MyEventDetailActivity extends AppCompatActivity implements View.OnC
             Intent intent = new Intent(MyEventDetailActivity.this,UpdateEvent.class);
             intent.putExtra(UpdateEvent.EVENT,event);
             startActivityForResult(intent,1);
+        }
+        else if(v.getId() == R.id.btnMyEventDetailSemuanAnggota){
+            Services services = ApiClient.getRetrofit().create(Services.class);
+            Call<ArrayList<Anggota>> call = services.lihatSemuaAnggota(
+                    String.valueOf(event.getId())
+            );
+
+            call.enqueue(new Callback<ArrayList<Anggota>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Anggota>> call, Response<ArrayList<Anggota>> response) {
+                    Intent intent = new Intent(MyEventDetailActivity.this,SemuaAnggotaActivity.class);
+                    intent.putExtra(SemuaAnggotaActivity.ANGGOTAS,response.body());
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<Anggota>> call, Throwable t) {
+                    Toast.makeText(MyEventDetailActivity.this, "PERIKSA KONEKSI ANDA " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

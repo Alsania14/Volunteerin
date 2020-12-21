@@ -144,4 +144,10 @@ public interface Services {
         @Field("bio") String bio,
         @Field("no_telp") String no_telp
     );
+
+    @FormUrlEncoded
+    @POST("/api/detailevent/eventcreatorsemuaanggota")
+    Call<ArrayList<Anggota>> lihatSemuaAnggota(
+            @Field("event_id") String event_id
+    );
 }

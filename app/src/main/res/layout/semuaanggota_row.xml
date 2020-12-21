@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSemuaAnggotaNama"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:text="FUll Name"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvSemuaAnggotaUsername"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:text="FUll Name"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvSemuaAnggotaNotelp"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvSemuaAnggotaBio"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

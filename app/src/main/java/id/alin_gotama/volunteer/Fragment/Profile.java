@@ -50,25 +50,25 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile,container,false);
         sharedPreferences =  getContext().getSharedPreferences(penyimpanan.VOLUNTEERIN_STORAGE,Context.MODE_PRIVATE);
 
-        this.tvFullName = view.findViewById(R.id.tvProfileFullName);
-        this.tvUsername = view.findViewById(R.id.tvProfileUsername);
-        this.tvBio = view.findViewById(R.id.tvProfileBio);
-        this.tvNoTlp = view.findViewById(R.id.tvProfileNotelp);
+        tvFullName = view.findViewById(R.id.tvProfileFullName);
+        tvUsername = view.findViewById(R.id.tvProfileUsername);
+        tvBio = view.findViewById(R.id.tvProfileBio);
+        tvNoTlp = view.findViewById(R.id.tvProfileNotelp);
 
         this.btnLogoout = view.findViewById(R.id.btnProfileLogout);
         this.btnEdit = view.findViewById(R.id.btnProfileEdit);
 
-        this.tvUsername.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_USERNAME,"Empty"));
-        this.tvFullName.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_FULLNAME,"Empty"));
-        this.tvBio.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_BIO,"Empty"));
-        this.tvNoTlp.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_NOMOR,"Empty"));
-        this.btnLogoout.setOnClickListener(new View.OnClickListener() {
+        tvUsername.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_USERNAME,"Empty"));
+        tvFullName.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_FULLNAME,"Empty"));
+        tvBio.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_BIO,"Empty"));
+        tvNoTlp.setText(sharedPreferences.getString(penyimpanan.VOLUNTEERIN_NOMOR,"Empty"));
+        btnLogoout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alert();
             }
         });
-        this.btnEdit.setOnClickListener(new View.OnClickListener() {
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 edit();

@@ -161,6 +161,15 @@
                 tools:ignore="HardcodedText" />
 
             <Button
+                android:id="@+id/btnMyEventDetailSemuanAnggota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button"
+                android:text="LIHAT ANGGOTA"
+                tools:ignore="HardcodedText" />
+
+            <Button
                 android:id="@+id/btnMyEventDetailDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
